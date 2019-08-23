@@ -17,17 +17,24 @@ namespace SnakesAndLadders
         public int PlayerTokenPosition { get; private set; }
         public int DiceRollResult { get; private set; }
         public List<Snake> Snakes { get; private set; }
+        public List<Ladder> Ladders { get; private set; }
 
         public Game()
         {
             this.GameState = GameStateEnum.isStarted;
             this.PlayerTokenPosition = 1;
             this.Snakes = new List<Snake>();
+            this.Ladders = new List<Ladder>();
         }
 
         public void AddSnake(Snake snake)
         {
             this.Snakes.Add(snake);
+        }
+
+        public void AddLadder(Ladder ladder)
+        {
+            this.Ladders.Add(ladder);
         }
 
         public void MoveToken()
@@ -40,17 +47,23 @@ namespace SnakesAndLadders
             if (this.PlayerTokenPosition+spaces > 100) return;
 
             this.PlayerTokenPosition += spaces;
-            CheckForSnakes();
+            CheckForSnakesAndLadders();
             CheckIfPlayerHasWon();
             
         }
 
-        public void CheckForSnakes()
+        public void CheckForSnakesAndLadders()
         {
             Snake snake = this.Snakes.FirstOrDefault(s => s.fromSquare == this.PlayerTokenPosition);
             if (snake!=null)
             {
                 this.PlayerTokenPosition = snake.toSquare;
+            }
+
+            Ladder ladder = this.Ladders.FirstOrDefault(s => s.fromSquare == this.PlayerTokenPosition);
+            if (ladder != null)
+            {
+                this.PlayerTokenPosition = ladder.toSquare;
             }
         }
 
