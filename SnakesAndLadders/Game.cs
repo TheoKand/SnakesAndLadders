@@ -39,6 +39,9 @@ namespace SnakesAndLadders
                         Name="Player2"
                     }
                 };
+            } else
+            {
+                this.Players = players;
             }
 
             this.DeterminePlayOrder();

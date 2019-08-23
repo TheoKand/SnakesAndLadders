@@ -9,12 +9,12 @@ namespace SnakesAndLadders
         public string Name;
         public int TokenPosition;
         public int PlayOrderDiceRoll;
+        public bool DiceRolledForPlayOrder { get; private set; }
 
         public Player()
         {
             TokenPosition = 1;
-
-            this.PlayOrderDiceRoll = RollDiceForPlayOrder();
+            PlayOrderDiceRoll = 0;
         }
 
         public int RollDiceForPlayOrder()
@@ -23,6 +23,7 @@ namespace SnakesAndLadders
             int to = 6;
             int diceRollResult = new Random(Guid.NewGuid().GetHashCode()).Next(from, to + 1);
             this.PlayOrderDiceRoll = diceRollResult;
+            this.DiceRolledForPlayOrder = true;
             return diceRollResult;
         }
     }
