@@ -12,24 +12,24 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
         public void GivenThereIsASnakeConnecting2And12_WhenTokenLandsOn12_TokenIsOn2()
         {
             //arrange
-            Game game = new Game();
+            Game game = new Game(null);
             game.AddSnake(new Snake() {
                 fromSquare = 12,
                 toSquare = 2
             });
 
             //act
-            game.MoveToken(game.Players[game.playerToPlayNext], 11);
+            game.MoveToken(game.CurrentPlayer, 11);
 
             //assert
-            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 2);
+            Assert.AreEqual(game.CurrentPlayer.TokenPosition, 2);
         }   
 
         [Test]
         public void GivenThereIsASnakeConnecting2And12_WhenTokenLandsOn2_TokenIsOn2()
         {
             //arrange
-            Game game = new Game();
+            Game game = new Game(null);
             game.AddSnake(new Snake()
             {
                 fromSquare = 12,
@@ -37,10 +37,10 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
             });
 
             //act
-            game.MoveToken(game.Players[game.playerToPlayNext], 1);
+            game.MoveToken(game.CurrentPlayer, 1);
 
             //assert
-            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 2);
+            Assert.AreEqual(game.CurrentPlayer.TokenPosition, 2);
         }
     }
 }

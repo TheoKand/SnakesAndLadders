@@ -14,7 +14,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
         {
             for(int i=0;i<1000;i++)
             {
-                Game game = new Game();
+                Game game = new Game(null);
                 game.RollTheDice();
                 Console.WriteLine($"Dice roll result={game.DiceRollResult}");
                 Assert.GreaterOrEqual(game.DiceRollResult, 1);
@@ -25,12 +25,12 @@ namespace SnakesAndLadders.Test.MovingYourToken
         [Test]
         public void GivenThePlayerRollsA4_WhenTheyMoveTheirToken_TokenMoves4Spaces()
         {
-            Game game = new Game();
-            int previousPlayerTokenPosition = game.Players[game.playerToPlayNext].TokenPosition;
+            Game game = new Game(null);
+            int previousPlayerTokenPosition = game.CurrentPlayer.TokenPosition;
             game.RollTheDice(4);
             Assert.AreEqual(game.DiceRollResult, 4);
-            game.MoveToken(game.Players[game.playerToPlayNext]);
-            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, previousPlayerTokenPosition + 4);
+            game.MoveToken(game.CurrentPlayer);
+            Assert.AreEqual(game.CurrentPlayer.TokenPosition, previousPlayerTokenPosition + 4);
         }
     }
 }
