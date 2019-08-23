@@ -13,13 +13,13 @@ namespace SnakesAndLadders.Test.MovingYourToken
         {
             //Arrange
             Game game = new Game();
-            game.MoveToken(96);
+            game.MoveToken(game.Players[game.playerToPlayNext], 96);
 
             //Act
-            game.MoveToken(3);
+            game.MoveToken(game.Players[game.playerToPlayNext], 3);
 
             //Assert
-            Assert.AreEqual(game.PlayerTokenPosition, 100);
+            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 100);
             Assert.AreEqual(game.GameState, GameStateEnum.playerHasWon);
         }
 
@@ -28,13 +28,13 @@ namespace SnakesAndLadders.Test.MovingYourToken
         {
             //Arrange
             Game game = new Game();
-            game.MoveToken(96);
+            game.MoveToken(game.Players[game.playerToPlayNext], 96);
 
             //Act
-            game.MoveToken(4);
+            game.MoveToken(game.Players[game.playerToPlayNext], 4);
 
             //Assert
-            Assert.AreEqual(game.PlayerTokenPosition, 97);
+            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 97);
             Assert.AreNotEqual(game.GameState, GameStateEnum.playerHasWon);
         }
     }

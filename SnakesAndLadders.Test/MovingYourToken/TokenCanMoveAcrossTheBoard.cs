@@ -12,24 +12,24 @@ namespace SnakesAndLadders.Test.MovingYourToken
         {
             Game game = new Game();
             Assert.AreEqual(game.GameState, GameStateEnum.isStarted);
-            Assert.AreEqual(game.PlayerTokenPosition, 1);
+            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 1);
         }
 
         [Test]
         public void GivenTheTokenIsOnSquare1_WhenTheTokenIsMoved3Spaces_TokenIsOnSqure4()
         {
             Game game = new Game();
-            game.MoveToken(3);
-            Assert.AreEqual(game.PlayerTokenPosition, 4);
+            game.MoveToken(game.Players[game.playerToPlayNext],3);
+            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 4);
         }
 
         [Test]
         public void GivenTheTokenIsOnSquare1_WhenTheTokenIsMoved3SpacesAndThen4Spaces_TokenIsOnSqure8()
         {
             Game game = new Game();
-            game.MoveToken(3);
-            game.MoveToken(4);
-            Assert.AreEqual(game.PlayerTokenPosition, 8);
+            game.MoveToken(game.Players[game.playerToPlayNext],3);
+            game.MoveToken(game.Players[game.playerToPlayNext],4);
+            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 8);
         }
     }
 }

@@ -14,17 +14,30 @@ namespace SnakesAndLadders
         }
 
         public GameStateEnum GameState { get; private set; }
-        public int PlayerTokenPosition { get; private set; }
+        public int playerToPlayNext { get; private set; }
         public int DiceRollResult { get; private set; }
         public List<Snake> Snakes { get; private set; }
         public List<Ladder> Ladders { get; private set; }
+        public List<Player> Players { get; private set; }
 
         public Game()
         {
             this.GameState = GameStateEnum.isStarted;
-            this.PlayerTokenPosition = 1;
             this.Snakes = new List<Snake>();
             this.Ladders = new List<Ladder>();
+            this.Players = new List<Player>
+            {
+                new Player()
+                {
+                    Name="Player1"
+                },
+                new Player()
+                {
+                    Name="Player2"
+                }
+            };
+
+
         }
 
         public void AddSnake(Snake snake)
@@ -37,39 +50,39 @@ namespace SnakesAndLadders
             this.Ladders.Add(ladder);
         }
 
-        public void MoveToken()
+        public void MoveToken(Player player)
         {
-            MoveToken(this.DiceRollResult);
+            MoveToken(player, this.DiceRollResult);
         }
 
-        public void MoveToken(int spaces)
+        public void MoveToken(Player player, int spaces)
         {
-            if (this.PlayerTokenPosition+spaces > 100) return;
+            if (player.TokenPosition+spaces > 100) return;
 
-            this.PlayerTokenPosition += spaces;
-            CheckForSnakesAndLadders();
-            CheckIfPlayerHasWon();
+            player.TokenPosition += spaces;
+            CheckForSnakesAndLadders(player);
+            CheckIfPlayerHasWon(player);
             
         }
 
-        public void CheckForSnakesAndLadders()
+        public void CheckForSnakesAndLadders(Player player)
         {
-            Snake snake = this.Snakes.FirstOrDefault(s => s.fromSquare == this.PlayerTokenPosition);
+            Snake snake = this.Snakes.FirstOrDefault(s => s.fromSquare == player.TokenPosition);
             if (snake!=null)
             {
-                this.PlayerTokenPosition = snake.toSquare;
+                player.TokenPosition = snake.toSquare;
             }
 
-            Ladder ladder = this.Ladders.FirstOrDefault(s => s.fromSquare == this.PlayerTokenPosition);
+            Ladder ladder = this.Ladders.FirstOrDefault(s => s.fromSquare == player.TokenPosition);
             if (ladder != null)
             {
-                this.PlayerTokenPosition = ladder.toSquare;
+                player.TokenPosition = ladder.toSquare;
             }
         }
 
-        public void CheckIfPlayerHasWon()
+        public void CheckIfPlayerHasWon(Player player)
         {
-            if (this.PlayerTokenPosition==100)
+            if (player.TokenPosition == 100)
             {
                 this.GameState = GameStateEnum.playerHasWon;
             }

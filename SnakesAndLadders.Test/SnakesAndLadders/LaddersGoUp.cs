@@ -19,10 +19,10 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
             });
 
             //act
-            game.MoveToken(1);
+            game.MoveToken(game.Players[game.playerToPlayNext],1);
 
             //assert
-            Assert.AreEqual(game.PlayerTokenPosition, 12);
+            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 12);
         }   
 
         [Test]
@@ -37,10 +37,10 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
             });
 
             //act
-            game.MoveToken(11);
+            game.MoveToken(game.Players[game.playerToPlayNext], 11);
 
             //assert
-            Assert.AreEqual(game.PlayerTokenPosition, 12);
+            Assert.AreEqual(game.Players[game.playerToPlayNext].TokenPosition, 12);
         }
     }
 }
