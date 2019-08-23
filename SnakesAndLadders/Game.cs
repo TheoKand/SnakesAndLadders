@@ -113,6 +113,20 @@ namespace SnakesAndLadders
             CheckForSnakesAndLadders(player);
             CheckIfPlayerHasWon(player);
 
+            if (this.GameState != GameStateEnum.playerHasWon)
+            {
+                this.ModifyPlayOrder();
+            }
+
+        }
+
+        private void ModifyPlayOrder()
+        {
+            this.PlayerToPlayNext++;
+            if (this.PlayerToPlayNext>=this.Players.Count)
+            {
+                this.PlayerToPlayNext = 0;
+            }
         }
 
         public void CheckForSnakesAndLadders(Player player)

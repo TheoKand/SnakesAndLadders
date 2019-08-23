@@ -26,11 +26,12 @@ namespace SnakesAndLadders.Test.MovingYourToken
         public void GivenThePlayerRollsA4_WhenTheyMoveTheirToken_TokenMoves4Spaces()
         {
             Game game = new Game(null);
-            int previousPlayerTokenPosition = game.CurrentPlayer.TokenPosition;
+            Player currentPlayer = game.CurrentPlayer;
+            int previousPlayerTokenPosition = currentPlayer.TokenPosition;
             game.RollTheDice(4);
             Assert.AreEqual(game.DiceRollResult, 4);
-            game.MoveToken(game.CurrentPlayer);
-            Assert.AreEqual(game.CurrentPlayer.TokenPosition, previousPlayerTokenPosition + 4);
+            game.MoveToken(currentPlayer);
+            Assert.AreEqual(currentPlayer.TokenPosition, previousPlayerTokenPosition + 4);
         }
     }
 }

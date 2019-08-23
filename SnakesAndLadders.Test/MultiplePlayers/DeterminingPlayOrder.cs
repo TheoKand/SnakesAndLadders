@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SnakesAndLadders.Test.Multiple_Players
+namespace SnakesAndLadders.Test.MultiplePlayers
 {
     public class DeterminingPlayOrder
     {

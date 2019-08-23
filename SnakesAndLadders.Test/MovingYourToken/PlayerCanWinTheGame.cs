@@ -12,7 +12,12 @@ namespace SnakesAndLadders.Test.MovingYourToken
         public void GivenTheTokenIsOnSquare97_WhenTheTokenIsMoved3Spaces_PlayerWinsGame()
         {
             //Arrange
-            Game game = new Game(null);
+            Game game = new Game(new List<Player> {
+                new Player()
+                {
+                    Name="Player1"
+                }
+            });
             game.MoveToken(game.CurrentPlayer, 96);
 
             //Act
@@ -24,10 +29,15 @@ namespace SnakesAndLadders.Test.MovingYourToken
         }
 
         [Test]
-        public void GivenTheTokenIsOnSquare97_WhenTheTokenIsMoved4Spaces_PlayerDoestNotWinGame()
+        public void GivenTheTokenIsOnSquare97_WhenTheTokenIsMoved4Spaces_PlayerDoesNotWinGame()
         {
             //Arrange
-            Game game = new Game(null);
+            Game game = new Game(new List<Player> {
+                new Player()
+                {
+                    Name="Player1"
+                }
+            });
             game.MoveToken(game.CurrentPlayer, 96);
 
             //Act

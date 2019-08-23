@@ -12,7 +12,12 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
         public void GivenThereIsASnakeConnecting2And12_WhenTokenLandsOn12_TokenIsOn2()
         {
             //arrange
-            Game game = new Game(null);
+            Game game = new Game(new List<Player> {
+                new Player()
+                {
+                    Name="Player1"
+                }
+            });
             game.AddSnake(new Snake() {
                 fromSquare = 12,
                 toSquare = 2
@@ -29,7 +34,12 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
         public void GivenThereIsASnakeConnecting2And12_WhenTokenLandsOn2_TokenIsOn2()
         {
             //arrange
-            Game game = new Game(null);
+            Game game = new Game(new List<Player> {
+                new Player()
+                {
+                    Name="Player1"
+                }
+            });
             game.AddSnake(new Snake()
             {
                 fromSquare = 12,
