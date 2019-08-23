@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SnakesAndLadders.Test.MovingYourToken
 {
-    public class MovesAreDeterminedByDiceRolls
+    public class SnakesGoDown
     {
 
         [Test]
