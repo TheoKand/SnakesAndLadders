@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using static SnakesAndLadders.Game;
 
 namespace SnakesAndLadders.Test.MovingYourToken
 {
@@ -10,6 +11,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
         public void GivenTheGameIsStarted_WhenTheTokenIsPlacedOnTheBoard_TokenIsOnSquare1()
         {
             Game game = new Game();
+            Assert.AreEqual(game.GameState, GameStateEnum.isStarted);
             Assert.AreEqual(game.PlayerTokenPosition, 1);
         }
 

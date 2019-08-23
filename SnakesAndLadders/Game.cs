@@ -4,13 +4,20 @@ namespace SnakesAndLadders
 {
     public class Game
     {
-        public bool IsStarted { get; private set; }
+
+        public enum GameStateEnum
+        {
+            isStarted,
+            playerHasWon
+        }
+
+        public GameStateEnum GameState { get; private set; }
         public int PlayerTokenPosition { get; private set; }
         public int DiceRollResult { get; private set; }
 
         public Game()
         {
-            this.IsStarted = false;
+            this.GameState = GameStateEnum.isStarted;
             this.PlayerTokenPosition = 1;
         }
 
@@ -21,7 +28,18 @@ namespace SnakesAndLadders
 
         public void MoveToken(int spaces)
         {
+            if (this.PlayerTokenPosition+spaces > 100) return;
+
             this.PlayerTokenPosition += spaces;
+            CheckIfPlayerHasWon();
+        }
+
+        public void CheckIfPlayerHasWon()
+        {
+            if (this.PlayerTokenPosition==100)
+            {
+                this.GameState = GameStateEnum.playerHasWon;
+            }
         }
 
         public void RollTheDice()
