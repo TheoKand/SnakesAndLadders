@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SnakesAndLadders
 {
@@ -14,11 +16,18 @@ namespace SnakesAndLadders
         public GameStateEnum GameState { get; private set; }
         public int PlayerTokenPosition { get; private set; }
         public int DiceRollResult { get; private set; }
+        public List<Snake> Snakes { get; private set; }
 
         public Game()
         {
             this.GameState = GameStateEnum.isStarted;
             this.PlayerTokenPosition = 1;
+            this.Snakes = new List<Snake>();
+        }
+
+        public void AddSnake(Snake snake)
+        {
+            this.Snakes.Add(snake);
         }
 
         public void MoveToken()
@@ -31,7 +40,18 @@ namespace SnakesAndLadders
             if (this.PlayerTokenPosition+spaces > 100) return;
 
             this.PlayerTokenPosition += spaces;
+            CheckForSnakes();
             CheckIfPlayerHasWon();
+            
+        }
+
+        public void CheckForSnakes()
+        {
+            Snake snake = this.Snakes.FirstOrDefault(s => s.fromSquare == this.PlayerTokenPosition);
+            if (snake!=null)
+            {
+                this.PlayerTokenPosition = snake.toSquare;
+            }
         }
 
         public void CheckIfPlayerHasWon()
