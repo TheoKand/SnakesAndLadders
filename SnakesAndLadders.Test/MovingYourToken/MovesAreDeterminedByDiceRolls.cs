@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Moq;
 
 namespace SnakesAndLadders.Test.MovingYourToken
 {
@@ -14,22 +14,35 @@ namespace SnakesAndLadders.Test.MovingYourToken
         {
             for(int i=0;i<1000;i++)
             {
-                Game game = new Game(null);
+                //Arrange
+                IDice dice = new Dice();
+                Game game = new Game(dice, null);
+
+                //Act
                 game.RollTheDice();
-                Console.WriteLine($"Dice roll result={game.DiceRollResult}");
-                Assert.GreaterOrEqual(game.DiceRollResult, 1);
-                Assert.LessOrEqual(game.DiceRollResult, 6);
+
+                //Assert
+                Assert.GreaterOrEqual(dice.Result, 1);
+                Assert.LessOrEqual(dice.Result, 6);
             }
         }
 
         [Test]
         public void GivenThePlayerRollsA4_WhenTheyMoveTheirToken_TokenMoves4Spaces()
         {
-            Game game = new Game(null);
+            //Arrange
+            Mock<IDice> dice = new Mock<IDice>();
+            dice.SetupGet(m => m.Result).Returns(4);
+
+            Game game = new Game(dice.Object, null);
             Player currentPlayer = game.CurrentPlayer;
             int previousPlayerTokenPosition = currentPlayer.TokenPosition;
-            game.RollTheDice(4);
+
+            //Act
+            game.RollTheDice();
             game.MoveToken(currentPlayer);
+
+            //Assert
             Assert.AreEqual(currentPlayer.TokenPosition, previousPlayerTokenPosition + 4);
         }
     }

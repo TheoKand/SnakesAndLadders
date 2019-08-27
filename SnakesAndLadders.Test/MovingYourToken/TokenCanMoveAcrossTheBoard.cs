@@ -11,7 +11,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
         [Test]
         public void GivenTheGameIsStarted_WhenTheTokenIsPlacedOnTheBoard_TokenIsOnSquare1()
         {
-            Game game = new Game(new List<Player> {
+            Game game = new Game(new Dice(), new List<Player> {
                 new Player()
                 {
                     Name="Player1"
@@ -23,7 +23,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
         [Test]
         public void GivenTheTokenIsOnSquare1_WhenTheTokenIsMoved3Spaces_TokenIsOnSqure4()
         {
-            Game game = new Game(new List<Player> {
+            Game game = new Game(new Dice(), new List<Player> {
                 new Player()
                 {
                     Name="Player1"
@@ -36,7 +36,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
         [Test]
         public void GivenTheTokenIsOnSquare1_WhenTheTokenIsMoved3SpacesAndThen4Spaces_TokenIsOnSqure8()
         {
-            Game game = new Game(new List<Player> {
+            Game game = new Game(new Dice(), new List<Player> {
                 new Player()
                 {
                     Name="Player1"

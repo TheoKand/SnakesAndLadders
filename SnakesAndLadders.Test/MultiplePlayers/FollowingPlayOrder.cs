@@ -27,7 +27,7 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 };
 
             //act
-            Game game = new Game(players);
+            Game game = new Game(new Dice(), players);
             game.MoveToken(game.CurrentPlayer, 1);
 
             //assert

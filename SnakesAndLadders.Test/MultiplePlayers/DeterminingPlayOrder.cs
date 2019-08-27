@@ -26,7 +26,7 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 };
 
             //act
-            Game game = new Game(players);
+            Game game = new Game(new Dice(), players);
 
             //assert
             players.ForEach(p => Assert.True(p.PlayOrderDiceRoll != 0));
@@ -51,7 +51,7 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 };
 
             //act
-            Game game = new Game(players);
+            Game game = new Game(new Dice(), players);
 
             //assert
             Assert.AreSame(game.CurrentPlayer, players[0]);
@@ -76,7 +76,7 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 };
 
             //act
-            Game game = new Game(players);
+            Game game = new Game(new Dice(), players);
 
             //assert
             Assert.AreSame(game.CurrentPlayer, players[1]);
@@ -101,7 +101,7 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 };
 
             //act
-            Game game = new Game(players);
+            Game game = new Game(new Dice(), players);
 
             //assert
             players.ForEach(p => Assert.True(p.DiceRolledForPlayOrder));

@@ -12,7 +12,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
         public void GivenTheTokenIsOnSquare97_WhenTheTokenIsMoved3Spaces_PlayerWinsGame()
         {
             //Arrange
-            Game game = new Game(new List<Player> {
+            Game game = new Game(new Dice(), new List<Player> {
                 new Player()
                 {
                     Name="Player1"
@@ -32,7 +32,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
         public void GivenTheTokenIsOnSquare97_WhenTheTokenIsMoved4Spaces_PlayerDoesNotWinGame()
         {
             //Arrange
-            Game game = new Game(new List<Player> {
+            Game game = new Game(new Dice(), new List<Player> {
                 new Player()
                 {
                     Name="Player1"

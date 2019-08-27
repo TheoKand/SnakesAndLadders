@@ -7,20 +7,17 @@ namespace SnakesAndLadders
     public class Game
     {
 
-        public enum GameStateEnum
-        {
-            isStarted,
-            playerHasWon
-        }
+        private IDice dice;
 
         public int PlayerToPlayNext { get; private set; }
-        public int DiceRollResult { get; private set; }
         public List<Snake> Snakes { get; private set; }
         public List<Ladder> Ladders { get; private set; }
         public List<Player> Players { get; private set; }
 
-        public Game(List<Player> players)
+        public Game(IDice dice, List<Player> players)
         {
+            this.dice = dice;
+
             this.Snakes = new List<Snake>();
             this.Ladders = new List<Ladder>();
 
@@ -97,7 +94,7 @@ namespace SnakesAndLadders
 
         public void MoveToken(Player player)
         {
-            MoveToken(player, this.DiceRollResult);
+            MoveToken(player, this.dice.Result);
         }
 
         public void MoveToken(Player player, int spaces)
@@ -142,19 +139,10 @@ namespace SnakesAndLadders
             }
         }
 
-
-
         public void RollTheDice()
         {
-            int from = 1;
-            int to = 6;
-            int diceRollResult = new Random(Guid.NewGuid().GetHashCode()).Next(from, to + 1);
-            RollTheDice(diceRollResult);
+            this.dice.Roll();
         }
 
-        public void RollTheDice(int diceRollResult)
-        {
-            this.DiceRollResult = diceRollResult;
-        }
     }
 }
