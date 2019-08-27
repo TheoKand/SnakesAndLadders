@@ -13,7 +13,6 @@ namespace SnakesAndLadders
             playerHasWon
         }
 
-        public GameStateEnum GameState { get; private set; }
         public int PlayerToPlayNext { get; private set; }
         public int DiceRollResult { get; private set; }
         public List<Snake> Snakes { get; private set; }
@@ -22,7 +21,6 @@ namespace SnakesAndLadders
 
         public Game(List<Player> players)
         {
-            this.GameState = GameStateEnum.isStarted;
             this.Snakes = new List<Snake>();
             this.Ladders = new List<Ladder>();
 
@@ -111,9 +109,9 @@ namespace SnakesAndLadders
 
             player.TokenPosition += spaces;
             CheckForSnakesAndLadders(player);
-            CheckIfPlayerHasWon(player);
+            player.CheckIfPlayerHasWon();
 
-            if (this.GameState != GameStateEnum.playerHasWon)
+            if (!player.IsWinner)
             {
                 this.ModifyPlayOrder();
             }
@@ -144,13 +142,7 @@ namespace SnakesAndLadders
             }
         }
 
-        public void CheckIfPlayerHasWon(Player player)
-        {
-            if (player.TokenPosition == 100)
-            {
-                this.GameState = GameStateEnum.playerHasWon;
-            }
-        }
+
 
         public void RollTheDice()
         {

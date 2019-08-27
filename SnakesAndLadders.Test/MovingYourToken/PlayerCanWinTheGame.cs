@@ -25,7 +25,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
 
             //Assert
             Assert.AreEqual(game.CurrentPlayer.TokenPosition, 100);
-            Assert.AreEqual(game.GameState, GameStateEnum.playerHasWon);
+            Assert.True(game.CurrentPlayer.IsWinner);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace SnakesAndLadders.Test.MovingYourToken
 
             //Assert
             Assert.AreEqual(game.CurrentPlayer.TokenPosition, 97);
-            Assert.AreNotEqual(game.GameState, GameStateEnum.playerHasWon);
+            Assert.False(game.CurrentPlayer.IsWinner);
         }
     }
 }

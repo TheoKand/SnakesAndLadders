@@ -8,6 +8,7 @@ namespace SnakesAndLadders
     {
         public string Name;
         public int TokenPosition;
+        public bool IsWinner;
         public int PlayOrderDiceRoll;
         public bool DiceRolledForPlayOrder { get; private set; }
 
@@ -15,6 +16,7 @@ namespace SnakesAndLadders
         {
             TokenPosition = 1;
             PlayOrderDiceRoll = 0;
+            IsWinner = false;
         }
 
         public int RollDiceForPlayOrder()
@@ -25,6 +27,14 @@ namespace SnakesAndLadders
             this.PlayOrderDiceRoll = diceRollResult;
             this.DiceRolledForPlayOrder = true;
             return diceRollResult;
+        }
+
+        public void CheckIfPlayerHasWon()
+        {
+            if (this.TokenPosition == 100)
+            {
+                IsWinner = true;
+            }
         }
     }
 }

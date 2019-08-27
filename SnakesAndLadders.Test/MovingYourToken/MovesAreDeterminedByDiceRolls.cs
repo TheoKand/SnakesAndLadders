@@ -29,7 +29,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
             Player currentPlayer = game.CurrentPlayer;
             int previousPlayerTokenPosition = currentPlayer.TokenPosition;
             game.RollTheDice(4);
-            Assert.AreEqual(game.DiceRollResult, 4);
             game.MoveToken(currentPlayer);
             Assert.AreEqual(currentPlayer.TokenPosition, previousPlayerTokenPosition + 4);
         }

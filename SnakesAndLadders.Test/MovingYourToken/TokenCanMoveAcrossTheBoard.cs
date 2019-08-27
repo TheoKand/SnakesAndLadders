@@ -17,7 +17,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
                     Name="Player1"
                 }
             });
-            Assert.AreEqual(game.GameState, GameStateEnum.isStarted);
             Assert.AreEqual(game.CurrentPlayer.TokenPosition, 1);
         }
 
