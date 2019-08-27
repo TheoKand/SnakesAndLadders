@@ -49,7 +49,7 @@ namespace SnakesAndLadders
             {
                 this.Players.ForEach(p =>
                 {
-                    p.RollDiceForPlayOrder();
+                    p.RollDiceForPlayOrder(this.dice);
                 });
             }
 
@@ -100,7 +100,7 @@ namespace SnakesAndLadders
             }
 
             player.TokenPosition += this.dice.Result;
-            CheckForSnakesAndLadders(player);
+            CheckForSnakesAndLadders();
             player.CheckIfPlayerHasWon();
 
             if (!player.IsWinner)
@@ -118,18 +118,18 @@ namespace SnakesAndLadders
             }
         }
 
-        public void CheckForSnakesAndLadders(Player player)
+        public void CheckForSnakesAndLadders()
         {
-            Snake snake = this.Snakes.FirstOrDefault(s => s.fromSquare == player.TokenPosition);
+            Snake snake = this.Snakes.FirstOrDefault(s => s.fromSquare == this.CurrentPlayer.TokenPosition);
             if (snake != null)
             {
-                player.TokenPosition = snake.toSquare;
+                this.CurrentPlayer.TokenPosition = snake.toSquare;
             }
 
-            Ladder ladder = this.Ladders.FirstOrDefault(s => s.fromSquare == player.TokenPosition);
+            Ladder ladder = this.Ladders.FirstOrDefault(s => s.fromSquare == this.CurrentPlayer.TokenPosition);
             if (ladder != null)
             {
-                player.TokenPosition = ladder.toSquare;
+                this.CurrentPlayer.TokenPosition = ladder.toSquare;
             }
         }
 

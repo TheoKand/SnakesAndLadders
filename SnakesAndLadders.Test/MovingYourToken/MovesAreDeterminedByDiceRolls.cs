@@ -34,7 +34,12 @@ namespace SnakesAndLadders.Test.MovingYourToken
             Mock<IDice> dice = new Mock<IDice>();
             dice.SetupGet(m => m.Result).Returns(4);
 
-            Game game = new Game(dice.Object, null);
+            Game game = new Game(dice.Object, new List<Player> {
+                new Player()
+                {
+                    Name="Player1"
+                }
+            });
             Player currentPlayer = game.CurrentPlayer;
             int previousPlayerTokenPosition = currentPlayer.TokenPosition;
 
