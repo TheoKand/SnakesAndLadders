@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,8 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
         public void GivenThereIsALadderConnecting2And12_WhenTokenLandsOn2_TokenIsOn12()
         {
             //arrange
-            Game game = new Game(new Dice(), new List<Player> {
+            Mock<IDice> dice = new Mock<IDice>();
+            Game game = new Game(dice.Object, new List<Player> {
                 new Player()
                 {
                     Name="Player1"
@@ -24,7 +26,8 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
             });
 
             //act
-            game.MoveToken(game.CurrentPlayer,1);
+            dice.SetupGet(m => m.Result).Returns(1);
+            game.MoveToken(game.CurrentPlayer);
 
             //assert
             Assert.AreEqual(game.CurrentPlayer.TokenPosition, 12);
@@ -34,7 +37,8 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
         public void GivenThereIsALadderConnecting2And12_WhenTokenLandsOn12_TokenIsOn12()
         {
             //arrange
-            Game game = new Game(new Dice(), new List<Player> {
+            Mock<IDice> dice = new Mock<IDice>();
+            Game game = new Game(dice.Object, new List<Player> {
                 new Player()
                 {
                     Name="Player1"
@@ -47,7 +51,8 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
             });
 
             //act
-            game.MoveToken(game.CurrentPlayer, 11);
+            dice.SetupGet(m => m.Result).Returns(11);
+            game.MoveToken(game.CurrentPlayer);
 
             //assert
             Assert.AreEqual(game.CurrentPlayer.TokenPosition, 12);

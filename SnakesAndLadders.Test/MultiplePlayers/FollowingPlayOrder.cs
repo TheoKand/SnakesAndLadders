@@ -12,6 +12,7 @@ namespace SnakesAndLadders.Test.MultiplePlayers
         public void GivenItIsPlayer1Turn_WhenTheyHaveMoved_ItsPlayer2Turn()
         {
             //arrange
+
             List<Player> players = new List<Player>
                 {
                     new Player()
@@ -28,36 +29,36 @@ namespace SnakesAndLadders.Test.MultiplePlayers
 
             //act
             Game game = new Game(new Dice(), players);
-            game.MoveToken(game.CurrentPlayer, 1);
+            game.MoveToken(game.CurrentPlayer);
 
             //assert
             Assert.AreSame(game.CurrentPlayer, players[1]);
         }
 
-        //[Test]
-        //public void GivenItIsPlayer2Turn_WhenTheyHaveMoved_ItsPlayer1Turn()
-        //{
-        //    //arrange
-        //    List<Player> players = new List<Player>
-        //        {
-        //            new Player()
-        //            {
-        //                Name="Player1",
-        //                PlayOrderDiceRoll=1
-        //            },
-        //            new Player()
-        //            {
-        //                Name="Player2",
-        //                PlayOrderDiceRoll=6
-        //            }
-        //        };
+        [Test]
+        public void GivenItIsPlayer2Turn_WhenTheyHaveMoved_ItsPlayer1Turn()
+        {
+            //arrange
+            List<Player> players = new List<Player>
+                {
+                    new Player()
+                    {
+                        Name="Player1",
+                        PlayOrderDiceRoll=1
+                    },
+                    new Player()
+                    {
+                        Name="Player2",
+                        PlayOrderDiceRoll=6
+                    }
+                };
 
-        //    //act
-        //    Game game = new Game(players);
-        //    game.MoveToken(game.CurrentPlayer, 1);
+            //act
+            Game game = new Game(new Dice(), players);
+            game.MoveToken(game.CurrentPlayer);
 
-        //    //assert
-        //    Assert.AreSame(game.CurrentPlayer, players[0]);
-        //}
+            //assert
+            Assert.AreSame(game.CurrentPlayer, players[0]);
+        }
     }
 }

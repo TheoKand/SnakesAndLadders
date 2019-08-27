@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,16 +13,19 @@ namespace SnakesAndLadders.Test.MovingYourToken
         public void GivenTheTokenIsOnSquare97_WhenTheTokenIsMoved3Spaces_PlayerWinsGame()
         {
             //Arrange
-            Game game = new Game(new Dice(), new List<Player> {
+            Mock<IDice> dice = new Mock<IDice>();
+            Game game = new Game(dice.Object, new List<Player> {
                 new Player()
                 {
                     Name="Player1"
                 }
             });
-            game.MoveToken(game.CurrentPlayer, 96);
+            dice.SetupGet(m => m.Result).Returns(96);
+            game.MoveToken(game.CurrentPlayer);
 
             //Act
-            game.MoveToken(game.CurrentPlayer, 3);
+            dice.SetupGet(m => m.Result).Returns(3);
+            game.MoveToken(game.CurrentPlayer);
 
             //Assert
             Assert.AreEqual(game.CurrentPlayer.TokenPosition, 100);
@@ -32,16 +36,19 @@ namespace SnakesAndLadders.Test.MovingYourToken
         public void GivenTheTokenIsOnSquare97_WhenTheTokenIsMoved4Spaces_PlayerDoesNotWinGame()
         {
             //Arrange
-            Game game = new Game(new Dice(), new List<Player> {
+            Mock<IDice> dice = new Mock<IDice>();
+            Game game = new Game(dice.Object, new List<Player> {
                 new Player()
                 {
                     Name="Player1"
                 }
             });
-            game.MoveToken(game.CurrentPlayer, 96);
+            dice.SetupGet(m => m.Result).Returns(96);
+            game.MoveToken(game.CurrentPlayer);
 
             //Act
-            game.MoveToken(game.CurrentPlayer, 4);
+            dice.SetupGet(m => m.Result).Returns(4);
+            game.MoveToken(game.CurrentPlayer);
 
             //Assert
             Assert.AreEqual(game.CurrentPlayer.TokenPosition, 97);

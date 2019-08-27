@@ -94,17 +94,12 @@ namespace SnakesAndLadders
 
         public void MoveToken(Player player)
         {
-            MoveToken(player, this.dice.Result);
-        }
-
-        public void MoveToken(Player player, int spaces)
-        {
-            if (player.TokenPosition + spaces > 100)
+            if (player.TokenPosition + this.dice.Result > 100)
             {
                 return;
             }
 
-            player.TokenPosition += spaces;
+            player.TokenPosition += this.dice.Result;
             CheckForSnakesAndLadders(player);
             player.CheckIfPlayerHasWon();
 
@@ -112,7 +107,6 @@ namespace SnakesAndLadders
             {
                 this.ModifyPlayOrder();
             }
-
         }
 
         private void ModifyPlayOrder()
