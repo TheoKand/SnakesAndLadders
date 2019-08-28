@@ -22,7 +22,8 @@ namespace SnakesAndLadders
 
         public int RollDiceForPlayOrder(IDice dice)
         {
-            this.PlayOrderDiceRoll = dice.Roll();
+            dice.Roll();
+            this.PlayOrderDiceRoll = dice.Result;
             this.DiceRolledForPlayOrder = true;
             return this.PlayOrderDiceRoll;
         }
