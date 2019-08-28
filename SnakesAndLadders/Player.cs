@@ -8,9 +8,11 @@ namespace SnakesAndLadders
     {
         public string Name;
         public int TokenPosition;
-        public bool IsWinner;
+        public bool IsComputerControlled;
         public int PlayOrderDiceRoll;
+
         public bool DiceRolledForPlayOrder { get; private set; }
+        public bool IsWinner { get; private set; }
 
         public Player()
         {

@@ -40,7 +40,17 @@ namespace SnakesAndLadders
             }
 
             this.DeterminePlayOrder();
+            this.HandleComputerControlledCharacters();
 
+        }
+
+        private void HandleComputerControlledCharacters()
+        {
+            if (CurrentPlayer.IsComputerControlled)
+            {
+                this.RollTheDice();
+                this.MoveToken(CurrentPlayer);
+            }
         }
 
         private void DeterminePlayOrder()
@@ -106,6 +116,7 @@ namespace SnakesAndLadders
             if (!player.IsWinner)
             {
                 this.ModifyPlayOrder();
+                this.HandleComputerControlledCharacters();
             }
         }
 
