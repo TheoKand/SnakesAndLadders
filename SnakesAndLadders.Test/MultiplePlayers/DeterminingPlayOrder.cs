@@ -15,12 +15,10 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 {
                     new Player()
                     {
-                        Name="Player1",
                         PlayOrderDiceRoll=0
                     },
                     new Player()
                     {
-                        Name="Player2",
                         PlayOrderDiceRoll=0
                     }
                 };
@@ -40,12 +38,10 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 {
                     new Player()
                     {
-                        Name="Player1",
                         PlayOrderDiceRoll=6
                     },
                     new Player()
                     {
-                        Name="Player2",
                         PlayOrderDiceRoll=1
                     }
                 };
@@ -65,12 +61,10 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 {
                     new Player()
                     {
-                        Name="Player1",
                         PlayOrderDiceRoll=1
                     },
                     new Player()
                     {
-                        Name="Player2",
                         PlayOrderDiceRoll=6
                     }
                 };
@@ -90,12 +84,10 @@ namespace SnakesAndLadders.Test.MultiplePlayers
                 {
                     new Player()
                     {
-                        Name="Player1",
                         PlayOrderDiceRoll=6
                     },
                     new Player()
                     {
-                        Name="Player2",
                         PlayOrderDiceRoll=6
                     }
                 };

@@ -14,13 +14,11 @@ namespace SnakesAndLadders.Test.MovingYourToken
             //Arrange
             var computer = new Player()
             {
-                Name = "Computer",
                 IsComputerControlled = true,
                 PlayOrderDiceRoll=1,
             };
             var human = new Player()
             {
-                Name = "Player",
                 PlayOrderDiceRoll = 6
             };
 

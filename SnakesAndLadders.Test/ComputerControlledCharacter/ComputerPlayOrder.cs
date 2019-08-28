@@ -15,16 +15,12 @@ namespace SnakesAndLadders.Test.MovingYourToken
             //Arrange
             var computer = new Player()
             {
-                Name = "Computer",
                 IsComputerControlled = true
             };
 
             Game game = new Game(new Dice(), new List<Player> {
                 computer,
                 new Player()
-                {
-                    Name="Player"
-                }
             });
 
             //Assert
@@ -37,7 +33,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
             //Arrange
             var computer = new Player()
             {
-                Name = "Computer",
                 IsComputerControlled = true,
                 PlayOrderDiceRoll=6
             };
@@ -46,7 +41,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
                 computer,
                 new Player()
                 {
-                    Name="Player",
                     PlayOrderDiceRoll=1
                 }
             });

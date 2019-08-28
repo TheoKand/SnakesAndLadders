@@ -14,9 +14,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
         {
             Game game = new Game(new Dice(), new List<Player> {
                 new Player()
-                {
-                    Name="Player1"
-                }
             });
             Assert.AreEqual(game.CurrentPlayer.TokenPosition, 1);
         }
@@ -28,9 +25,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
             Mock<IDice> dice = new Mock<IDice>();
             Game game = new Game(dice.Object, new List<Player> {
                 new Player()
-                {
-                    Name="Player1"
-                }
             });
             dice.SetupGet(m => m.Result).Returns(3);
             game.MoveToken(game.CurrentPlayer);
@@ -44,9 +38,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
             Mock<IDice> dice = new Mock<IDice>();
             Game game = new Game(dice.Object, new List<Player> {
                 new Player()
-                {
-                    Name="Player1"
-                }
             });
             dice.SetupGet(m => m.Result).Returns(3);
 

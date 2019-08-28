@@ -16,7 +16,9 @@ namespace SnakesAndLadders.Test.MovingYourToken
             {
                 //Arrange
                 IDice dice = new Dice();
-                Game game = new Game(dice, null);
+                Game game = new Game(dice, new List<Player> {
+                    new Player()
+                });
 
                 //Act
                 game.RollTheDice();
@@ -36,9 +38,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
 
             Game game = new Game(dice.Object, new List<Player> {
                 new Player()
-                {
-                    Name="Player1"
-                }
             });
             Player currentPlayer = game.CurrentPlayer;
             int previousPlayerTokenPosition = currentPlayer.TokenPosition;

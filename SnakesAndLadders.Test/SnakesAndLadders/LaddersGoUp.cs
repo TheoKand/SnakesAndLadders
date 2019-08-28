@@ -16,9 +16,6 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
             Mock<IDice> dice = new Mock<IDice>();
             Game game = new Game(dice.Object, new List<Player> {
                 new Player()
-                {
-                    Name="Player1"
-                }
             });
             game.AddLadder(new Ladder() {
                 fromSquare = 2,
@@ -40,9 +37,6 @@ namespace SnakesAndLadders.Test.SnakesAndLadders
             Mock<IDice> dice = new Mock<IDice>();
             Game game = new Game(dice.Object, new List<Player> {
                 new Player()
-                {
-                    Name="Player1"
-                }
             });
             game.AddLadder(new Ladder()
             {

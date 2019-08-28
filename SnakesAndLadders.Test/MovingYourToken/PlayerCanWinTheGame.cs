@@ -16,9 +16,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
             Mock<IDice> dice = new Mock<IDice>();
             Game game = new Game(dice.Object, new List<Player> {
                 new Player()
-                {
-                    Name="Player1"
-                }
             });
             dice.SetupGet(m => m.Result).Returns(96);
             game.MoveToken(game.CurrentPlayer);
@@ -39,9 +36,6 @@ namespace SnakesAndLadders.Test.MovingYourToken
             Mock<IDice> dice = new Mock<IDice>();
             Game game = new Game(dice.Object, new List<Player> {
                 new Player()
-                {
-                    Name="Player1"
-                }
             });
             dice.SetupGet(m => m.Result).Returns(96);
             game.MoveToken(game.CurrentPlayer);

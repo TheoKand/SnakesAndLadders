@@ -17,27 +17,10 @@ namespace SnakesAndLadders
         public Game(IDice dice, List<Player> players)
         {
             this.dice = dice;
+            this.Players = players;
 
             this.Snakes = new List<Snake>();
             this.Ladders = new List<Ladder>();
-
-            if (players == null)
-            {
-                this.Players = new List<Player>
-                {
-                    new Player()
-                    {
-                        Name="Player1"
-                    },
-                    new Player()
-                    {
-                        Name="Player2"
-                    }
-                };
-            } else
-            {
-                this.Players = players;
-            }
 
             this.DeterminePlayOrder();
             this.HandleComputerControlledCharacters();
